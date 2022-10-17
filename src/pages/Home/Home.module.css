@@ -1,0 +1,27 @@
+img {
+  margin: 0 auto 15px;
+}
+
+.trendingMovies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.moviesList {
+  text-align: center;
+  flex-basis: 15%;
+  color: #eee;
+  font-size: 18px;
+
+  padding: 10px 10px;
+  transition: 250ms;
+}
+
+.moviesList:hover {
+  scale: 1.05;
+  background-color: rgb(191, 24, 24);
+  border-radius: 5px;
+  box-shadow: 0 0 15px 2px rgb(42, 27, 27);
+}

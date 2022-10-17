@@ -1,29 +1,50 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-const API_KEY = '967fca2e12d0ec29fa75f230a5acdce3';
+import css from './Home.module.css';
+
+const apiTrendingFetch = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/trending/tv/week?api_key=967fca2e12d0ec29fa75f230a5acdce3`
+  );
+  const trendMovies = await response.json();
+  return trendMovies.results;
+};
 
 const Home = () => {
-  const apiTrendingFetch = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/trending/tv/week?api_key=967fca2e12d0ec29fa75f230a5acdce3`
-    );
-    const movies = await response.json();
-    console.log(movies);
-  };
+  // eslint-disable-next-line
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
-  apiTrendingFetch();
+  useEffect(() => {
+    let ignore = false;
+    setTrendingMovies([]);
+    apiTrendingFetch().then(result => {
+      if (!ignore) {
+        setTrendingMovies(result);
+      }
+    });
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   return (
-    <div>
-      Home
-      {/* map links from API */}
-      <br />
-      <Link to="movies/id-1">Movie 1</Link>
-      <br />т<Link to="movies/id-2">Movie 2</Link>
-      <br />
-      <Link to="movies/id-3">Movie 3</Link>
+    <div className={css.trendingMovies}>
+      {trendingMovies.map(el => (
+        <Link to={`movies/${el.id}`} key={el.id} className={css.moviesList}>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}
+            width="200px"
+            alt={el.name}
+          />
+          {el.name}
+        </Link>
+      )) ?? 'Loading...'}
     </div>
   );
 };
+
+// export const MoviesList = ({ id, name }) => {
+//   return <Link to="movies/3">{name}</Link>;
+// };
 
 export default Home;
