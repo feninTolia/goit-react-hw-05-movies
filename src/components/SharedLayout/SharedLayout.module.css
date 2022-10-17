@@ -1,0 +1,30 @@
+.sharedLayout {
+  padding: 30px 20px;
+  box-shadow: 0 0 20px 5px rgb(10, 10, 10);
+  background-color: #a62639;
+}
+
+.sharedLayoutOutlet {
+  padding: 20px 20px;
+  font-size: 18px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 25px;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  box-shadow: 0 0 15px 2px rgb(100, 44, 44);
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #db323d;
+  color: #eee;
+  transition: 250ms linear;
+}
+/* 
+.btn:hover:not(.active) {
+  color: blue;
+} */

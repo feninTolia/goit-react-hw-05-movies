@@ -1,15 +1,39 @@
 @import-normalize; /* bring in normalize.css styles */
 
 body {
+  color: #eee;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #56494e;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: #eee;
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.active {
+  background-color: #5d161a;
+  color: rgb(190, 189, 189);
+  box-shadow: none;
 }
