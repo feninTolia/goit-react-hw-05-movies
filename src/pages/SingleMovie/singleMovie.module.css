@@ -1,0 +1,9 @@
+.btn {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: rgb(236, 0, 0);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: 250ms;
+  box-shadow: 0 5px 10px 1px rgb(47, 30, 30);
+}

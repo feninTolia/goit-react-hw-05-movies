@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import BackLink from '../../components/BackLink/BackLink';
 import useFetch from '../../Service/useFetch';
+import css from './singleMovie.module.css';
 
 const SingleMovie = () => {
   const { moviesID } = useParams();
@@ -42,9 +43,13 @@ const SingleMovie = () => {
       Additional Information
       <br />
       <br />
-      <NavLink to="cast">Cast</NavLink>
+      <NavLink to="cast" className={css.btn}>
+        Cast
+      </NavLink>
       <br />
-      <NavLink to="reviews">Reviews</NavLink>
+      <NavLink to="reviews" className={css.btn}>
+        Reviews
+      </NavLink>
       <hr />
       <Outlet />
     </div>

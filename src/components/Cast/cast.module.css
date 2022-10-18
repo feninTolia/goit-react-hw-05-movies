@@ -18,3 +18,11 @@
   background-color: rgb(86, 9, 9);
   transition: 150ms;
 }
+
+.castItem img {
+  width: 100%;
+}
+
+.castItem p {
+  padding: 0 10px;
+}
