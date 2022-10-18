@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+const BASE_URL = 'https://api.themoviedb.org/3';
+
 function useFetch(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -8,7 +10,7 @@ function useFetch(url) {
   useEffect(() => {
     setLoading(true);
 
-    fetch(url)
+    fetch(`${BASE_URL}${url}`)
       .then(response => {
         return response.json();
       })

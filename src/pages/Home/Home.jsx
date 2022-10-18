@@ -1,16 +1,19 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import css from './Home.module.css';
 import useFetch from '../../Service/useFetch';
 
 const Home = () => {
-  const { data, loading, error, refetch } = useFetch(
-    `https://api.themoviedb.org/3/trending/tv/week?api_key=967fca2e12d0ec29fa75f230a5acdce3`
+  const { data, loading, error } = useFetch(
+    `/trending/tv/week?api_key=967fca2e12d0ec29fa75f230a5acdce3`
   );
 
-  if (loading) return <h1> LOADING...</h1>;
+  if (loading) return <h2> LOADING...</h2>;
 
-  if (error) console.log(error);
+  if (error) {
+    console.log(error);
+    return <h2>Something went wrong 😢 </h2>;
+  }
 
   return (
     <div className={css.trendingMovies}>
@@ -23,13 +26,9 @@ const Home = () => {
           />
           {el.name}
         </Link>
-      )) ?? 'Loading...'}
+      )) ?? 'loading...'}
     </div>
   );
 };
-
-// export const MoviesList = ({ id, name }) => {
-//   return <Link to="movies/3">{name}</Link>;
-// };
 
 export default Home;
