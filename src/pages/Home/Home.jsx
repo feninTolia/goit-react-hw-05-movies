@@ -5,7 +5,8 @@ import useFetch from '../../Service/useFetch';
 import handleImgLoadError from '../../helpers/handleImgLoadError';
 
 const Home = () => {
-  const { data, loading, error } = useFetch(`/trending/tv/week?`);
+  const FETCH_TRENDING_MOVIES = `/trending/tv/week?`;
+  const { data, loading, error } = useFetch(FETCH_TRENDING_MOVIES);
 
   if (loading) return <h2> LOADING...</h2>;
 

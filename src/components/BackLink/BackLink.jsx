@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -10,6 +11,10 @@ const BackLink = ({ children }) => {
       <Link to={locState.current ?? '/'}> {children}</Link>
     </div>
   );
+};
+
+BackLink.propTypes = {
+  children: PropTypes.string.isRequired,
 };
 
 export default BackLink;

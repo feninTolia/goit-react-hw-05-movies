@@ -4,8 +4,9 @@ import useFetch from '../../Service/useFetch';
 
 const Reviews = () => {
   const { moviesID } = useParams();
+  const FETCH_REVIEWS_BY_MOVIE_ID = `/tv/${moviesID}/reviews?`;
 
-  const { data, loading, error } = useFetch(`/tv/${moviesID}/reviews?`);
+  const { data, loading, error } = useFetch(FETCH_REVIEWS_BY_MOVIE_ID);
 
   if (loading) return <h2> LOADING...</h2>;
 

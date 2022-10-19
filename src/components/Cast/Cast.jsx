@@ -5,8 +5,9 @@ import handleImgLoadError from '../../helpers/handleImgLoadError';
 
 const Cast = () => {
   const { moviesID } = useParams();
+  const FETCH_CAST_BY_MOVIE_ID = `/tv/${moviesID}/credits?`;
 
-  const { data, loading, error } = useFetch(`/tv/${moviesID}/credits?`);
+  const { data, loading, error } = useFetch(FETCH_CAST_BY_MOVIE_ID);
 
   if (loading) return <h2> LOADING...</h2>;
 

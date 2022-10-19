@@ -1,29 +1,56 @@
-// import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Home from '../pages/Home/Home';
-import Movies from '../pages/Movies/Movies';
-import SingleMovie from '../pages/SingleMovie/SingleMovie';
 import SharedLayout from '../components/SharedLayout/SharedLayout';
-import Cast from '../components/Cast/Cast';
-import Reviews from '../components/Reviews/Reviews';
+// import Cast from '../components/Cast/Cast';
+// import Reviews from '../components/Reviews/Reviews';
 
-// const createAsyncComponent = path => lazy(() => import(path));
-// const Home = createAsyncComponent('src/pages/Home/Home.jsx');
-// const Movies = createAsyncComponent('../pages/Movies');
-// const SingleMovie = createAsyncComponent('../components/SingleMovie');
-// const Cast = createAsyncComponent('../components/Cast');
-// const Revievs = createAsyncComponent('../components/Revievs');
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const SingleMovie = lazy(() => import('../pages/SingleMovie/SingleMovie'));
+const Cast = lazy(() => import('../components/Cast/Cast'));
+const Reviews = lazy(() => import('../components/Reviews/Reviews'));
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="movies/:moviesID" element={<SingleMovie />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
+
+        <Route
+          path="movies"
+          element={
+            <Suspense fallback={<div>Wait..</div>}>
+              <Movies />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="movies/:moviesID"
+          element={
+            <Suspense fallback={<div>Wait..</div>}>
+              <SingleMovie />
+            </Suspense>
+          }
+        >
+          <Route
+            path="cast"
+            element={
+              <Suspense fallback={<div>Wait..</div>}>
+                <Cast />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="reviews"
+            element={
+              <Suspense fallback={<div>Wait..</div>}>
+                <Reviews />
+              </Suspense>
+            }
+          />
         </Route>
       </Route>
       <Route path="*" element={<Navigate to="/" replace={true} />} />

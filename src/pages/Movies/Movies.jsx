@@ -8,10 +8,10 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('query') ?? '';
   const [value, setValue] = useState(search);
-
   const location = useLocation();
+  const FETCH_MOVIES_BY_QUERY = `/search/tv?query=${search}`;
 
-  const { data, error } = useFetch(`/search/tv?query=${search}`);
+  const { data, error } = useFetch(FETCH_MOVIES_BY_QUERY);
 
   const handleChange = e => setValue(e.target.value);
 

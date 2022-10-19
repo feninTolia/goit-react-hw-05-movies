@@ -7,8 +7,9 @@ import handleImgLoadError from '../../helpers/handleImgLoadError';
 
 const SingleMovie = () => {
   const { moviesID } = useParams();
+  const FETCH_SINGLE_MOVIE_BY_ID = `/tv/${moviesID}?`;
 
-  const { data, loading, error } = useFetch(`/tv/${moviesID}?`);
+  const { data, loading, error } = useFetch(FETCH_SINGLE_MOVIE_BY_ID);
 
   if (loading) return <h2> LOADING...</h2>;
 
