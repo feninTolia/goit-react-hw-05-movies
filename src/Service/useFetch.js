@@ -26,25 +26,7 @@ function useFetch(url) {
       });
   }, [url]);
 
-  const refetch = () => {
-    setLoading(true);
-
-    fetch(`${BASE_URL}${url}&api_key=${API_KEY}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(result => {
-        setData(result);
-      })
-      .catch(err => {
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  return { data, loading, error, refetch };
+  return { data, loading, error };
 }
 
 export default useFetch;

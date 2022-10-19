@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import BackLink from '../../components/BackLink/BackLink';
 import useFetch from '../../Service/useFetch';
-import css from './singleMovie.module.css';
 import handleImgLoadError from '../../helpers/handleImgLoadError';
+import css from './singleMovie.module.css';
 
 const SingleMovie = () => {
   const { moviesID } = useParams();
@@ -29,7 +29,7 @@ const SingleMovie = () => {
         onError={handleImgLoadError}
       />
       <h1>
-        {data?.name}{' '}
+        {data?.name}
         {data?.first_air_date && (
           <span>({data?.first_air_date.slice(0, 4)})</span>
         )}

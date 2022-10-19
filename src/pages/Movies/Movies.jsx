@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import useFetch from '../../Service/useFetch';
-import css from './movies.module.css';
 import handleImgLoadError from '../../helpers/handleImgLoadError';
+import css from './movies.module.css';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,7 +44,9 @@ const Movies = () => {
       </form>
       <br />
       <div className={css.searchedMovies}>
-        {data?.results !== [] &&
+        {data?.results?.length === 0 ? (
+          <p>We don't have such TV shows 🤡</p>
+        ) : (
           data?.results?.map(el => (
             <Link
               to={el.id.toString()}
@@ -60,9 +62,9 @@ const Movies = () => {
               />
               {el.name}
             </Link>
-          ))}
+          ))
+        )}
       </div>
-      {data?.results?.length === 0 && <p>We don't have such TV shows 🤡</p>}
     </div>
   );
 };
