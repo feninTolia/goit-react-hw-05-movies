@@ -1,0 +1,55 @@
+.searchedMovies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* justify-content: center; */
+}
+
+.searchedMovieItem {
+  text-align: center;
+  flex-basis: 15%;
+  color: #eee;
+  font-size: 18px;
+
+  padding: 10px 10px;
+  transition: 250ms;
+}
+
+.searchedMovieItem:hover {
+  scale: 1.05;
+  background-color: rgb(191, 24, 24);
+  border-radius: 5px;
+  box-shadow: 0 0 15px 2px rgb(42, 27, 27);
+}
+
+.input {
+  color: #eee;
+  font-size: 20px;
+  width: 30vw;
+  padding: 10px 20px;
+  background-color: rgba(35, 11, 11, 0.706);
+  border: none;
+  border-radius: 20px;
+  margin-right: 20px;
+}
+
+.searchBtn {
+  color: #eee;
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: rgb(191, 24, 24);
+  box-shadow: 0 0 15px 2px rgb(42, 27, 27);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 250ms;
+}
+
+.searchBtn:hover {
+  background-color: rgb(170, 32, 32);
+  box-shadow: 0 0 10px 1px rgb(42, 27, 27);
+}
+
+.searchBtn:active {
+  box-shadow: none;
+}

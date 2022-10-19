@@ -11,7 +11,7 @@ const SharedLayout = () => {
         </NavLink>
 
         <NavLink to="/Movies" className={css.btn}>
-          Movies
+          TV Shows
         </NavLink>
       </div>
       <div className={css.sharedLayoutOutlet}>

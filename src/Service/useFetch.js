@@ -9,7 +9,7 @@ function useFetch(url) {
 
   useEffect(() => {
     setLoading(true);
-    console.log('inFetch');
+
     fetch(`${BASE_URL}${url}`)
       .then(response => {
         return response.json();

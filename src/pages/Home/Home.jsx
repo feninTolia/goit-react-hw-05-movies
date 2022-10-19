@@ -20,7 +20,10 @@ const Home = () => {
       {data?.results.map(el => (
         <Link to={`movies/${el.id}`} key={el.id} className={css.moviesList}>
           <img
-            src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}
+            src={
+              `https://image.tmdb.org/t/p/w500${el.poster_path}` ||
+              'palaceholder'
+            }
             width="200px"
             alt={el.name}
           />
