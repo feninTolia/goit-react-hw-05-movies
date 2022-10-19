@@ -2,11 +2,10 @@
 import { Link } from 'react-router-dom';
 import css from './Home.module.css';
 import useFetch from '../../Service/useFetch';
+import handleImgLoadError from '../../helpers/handleImgLoadError';
 
 const Home = () => {
-  const { data, loading, error } = useFetch(
-    `/trending/tv/week?api_key=967fca2e12d0ec29fa75f230a5acdce3`
-  );
+  const { data, loading, error } = useFetch(`/trending/tv/week?`);
 
   if (loading) return <h2> LOADING...</h2>;
 
@@ -26,6 +25,7 @@ const Home = () => {
             }
             width="200px"
             alt={el.name}
+            onError={handleImgLoadError}
           />
           {el.name}
         </Link>

@@ -1,17 +1,19 @@
 import { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import useFetch from '../../Service/useFetch';
 import css from './movies.module.css';
+import handleImgLoadError from '../../helpers/handleImgLoadError';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('query') ?? '';
   const [value, setValue] = useState(search);
-  const handleChange = e => setValue(e.target.value);
 
-  const { data, loading, error } = useFetch(
-    `/search/tv?query=${search}&api_key=967fca2e12d0ec29fa75f230a5acdce3`
-  );
+  const location = useLocation();
+
+  const { data, error } = useFetch(`/search/tv?query=${search}`);
+
+  const handleChange = e => setValue(e.target.value);
 
   const handleInputSubmit = e => {
     e.preventDefault();
@@ -20,8 +22,6 @@ const Movies = () => {
     }
     setSearchParams({ query: value });
   };
-
-  if (loading) return <h2> LOADING...</h2>;
 
   if (error) {
     console.log(error);
@@ -50,11 +50,13 @@ const Movies = () => {
               to={el.id.toString()}
               key={el.id}
               className={css.searchedMovieItem}
+              state={{ from: location }}
             >
               <img
                 src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}
                 width="200px"
                 alt={el.name}
+                onError={handleImgLoadError}
               />
               {el.name}
             </Link>

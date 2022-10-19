@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
+const API_KEY = '967fca2e12d0ec29fa75f230a5acdce3';
 
 function useFetch(url) {
   const [data, setData] = useState(null);
@@ -10,7 +11,7 @@ function useFetch(url) {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`${BASE_URL}${url}`)
+    fetch(`${BASE_URL}${url}&api_key=${API_KEY}`)
       .then(response => {
         return response.json();
       })
@@ -28,7 +29,7 @@ function useFetch(url) {
   const refetch = () => {
     setLoading(true);
 
-    fetch(url)
+    fetch(`${BASE_URL}${url}&api_key=${API_KEY}`)
       .then(response => {
         return response.json();
       })

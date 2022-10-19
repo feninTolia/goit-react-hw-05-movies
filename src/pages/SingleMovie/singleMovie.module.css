@@ -7,3 +7,7 @@
   transition: 250ms;
   box-shadow: 0 5px 10px 1px rgb(47, 30, 30);
 }
+
+.goBackBtn {
+  border: 1px solid white;
+}

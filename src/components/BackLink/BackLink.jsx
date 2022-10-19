@@ -1,10 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const BackLink = ({ children }) => {
+  const location = useLocation();
+  const locState = useRef(location.state?.from);
+
   return (
     <div>
-      <Link to="/"> {children}</Link>
+      <Link to={locState.current ?? '/'}> {children}</Link>
     </div>
   );
 };

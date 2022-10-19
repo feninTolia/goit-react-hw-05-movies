@@ -3,13 +3,12 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import BackLink from '../../components/BackLink/BackLink';
 import useFetch from '../../Service/useFetch';
 import css from './singleMovie.module.css';
+import handleImgLoadError from '../../helpers/handleImgLoadError';
 
 const SingleMovie = () => {
   const { moviesID } = useParams();
 
-  const { data, loading, error } = useFetch(
-    `/tv/${moviesID}?api_key=967fca2e12d0ec29fa75f230a5acdce3`
-  );
+  const { data, loading, error } = useFetch(`/tv/${moviesID}?`);
 
   if (loading) return <h2> LOADING...</h2>;
 
@@ -20,14 +19,20 @@ const SingleMovie = () => {
 
   return (
     <div>
-      <BackLink>Back to home</BackLink>
+      <BackLink>⬅ Go Back</BackLink>
       <br />
       <img
         src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
         width="400px"
         alt={data?.name}
+        onError={handleImgLoadError}
       />
-      <h1>{`${data?.name} (${data?.first_air_date.slice(0, 4)})`}</h1>
+      <h1>
+        {data?.name}{' '}
+        {data?.first_air_date && (
+          <span>({data?.first_air_date.slice(0, 4)})</span>
+        )}
+      </h1>
       <p>
         Userscore <span>{Math.round(data?.vote_average * 10)}%</span>
       </p>

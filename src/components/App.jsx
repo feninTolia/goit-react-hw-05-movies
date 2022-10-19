@@ -1,10 +1,9 @@
 // import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
 import SingleMovie from '../pages/SingleMovie/SingleMovie';
-import Error from '../pages/Error/Error';
 import SharedLayout from '../components/SharedLayout/SharedLayout';
 import Cast from '../components/Cast/Cast';
 import Reviews from '../components/Reviews/Reviews';
@@ -27,7 +26,7 @@ export const App = () => {
           <Route path="reviews" element={<Reviews />} />
         </Route>
       </Route>
-      <Route path="*" element={<Error />} />
+      <Route path="*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );
 };
